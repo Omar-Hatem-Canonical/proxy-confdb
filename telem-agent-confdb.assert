@@ -1,0 +1,125 @@
+type: confdb
+authority-id: 6mluykWFsbpSV8RGPGjH7KFAkAOvdRyN
+revision: 6
+account-id: 6mluykWFsbpSV8RGPGjH7KFAkAOvdRyN
+name: telem-agent
+timestamp: 2025-01-23T00:00:00+00:00
+views:
+  control-agent:
+    rules:
+      -
+        content:
+          -
+            access: read-write
+            request: address
+            storage: address
+          -
+            access: read-write
+            request: target
+            storage: target
+          -
+            access: read-write
+            request: key
+            storage: key
+          -
+            access: read-write
+            request: cert
+            storage: cert
+          -
+            access: read-write
+            request: serverca
+            storage: serverca
+        request: {protocol}
+        storage: agent.{protocol}
+  control-topics:
+    rules:
+      -
+        content:
+          -
+            access: read-write
+            request: sub
+            storage: sub
+          -
+            access: read-write
+            request: pub
+            storage: pub
+        request: {snap}
+        storage: allowed.{snap}
+body-length: 1264
+sign-key-sha3-384: _ZVYDARpG9K7riqn2S4frHFQ7r80LnzFfjydtshan1iq0cWM_M77JXK-Uz2fh13X
+
+{
+  "storage": {
+    "aliases": {
+      "protocol": {
+        "choices": [
+          "notls",
+          "tls"
+        ],
+        "type": "string"
+      },
+      "snap": {
+        "type": "string"
+      }
+    },
+    "schema": {
+      "agent": {
+        "keys": "$protocol",
+        "values": {
+          "schema": {
+            "address": "string",
+            "cert": "string",
+            "key": "string",
+            "serverca": "string",
+            "target": "string"
+          }
+        }
+      },
+      "allowed": {
+        "keys": "$snap",
+        "values": {
+          "schema": {
+            "pub": {
+              "type": "array",
+              "unique": true,
+              "values": "string"
+            },
+            "sub": {
+              "type": "array",
+              "unique": true,
+              "values": "string"
+            }
+          }
+        }
+      },
+      "denied": {
+        "keys": "$snap",
+        "values": {
+          "schema": {
+            "pub": {
+              "type": "array",
+              "unique": true,
+              "values": "string"
+            },
+            "sub": {
+              "type": "array",
+              "unique": true,
+              "values": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+AcLBcwQAAQoAHRYhBMW7T/7hksm6tJJa2K5glicztOHCBQJnyFp0AAoJEK5glicztOHCD1cP/iR0
+fg0vtztlo0oayzmD6bOkkr4uiz+JN9aLdL9MNSYYyzR1Z6uFUzce81h9xdBaogsnSRheEk8unv6B
+PHe/zdlprbq1rHB+FLyIMo6sO6wu8QM0ldpy5Cb8hNHriuK5LFEH1Rb/QNIYTER9mZpfuEVFggb8
+7u5HfcVdmwO5VEsrdKlIT83ChXrK8RZSadWi2MsgD3IY9q9dX/yYT7UjTpcFmdSCRZ8GDPbD0kAu
+BkpQp+6bTmNlWJy32Mg9jBssuCH4ClayLGHIU+hllhX4E4d6c+Hz0khBCwSymDKxOxE48gS2fH7U
+EscojEpx4X6zKryoJoZKhL7dATvAIXHA9b1xvYUr4KsxXb/Ug8oAq8rdO72Pt5cydqhclFloacBL
+dOBvRHHzGFAYq7lC7dRgCtsWyQsibOj5cUgvz92M6fkCSAtt2xGRwVJDOzL9a0Bq68t3HBkl146W
+OZfG1zp14xVo3GP1hyXkS7lQjsO8K838ZZnVsVABY8XzPAZ0R3nBtJDqvHnZ0WiIkLTvITf8Ozvu
+tMwLIEF0zhzB5rEQJ6OEs49TIKQFJ9klxlrl14EAaGk9V7Kni5lIQMy4TKzxhUlKAz7zlj2sLAJh
+y/UzoH+eHhWQ+ieruBl45SqXiGUNXpsQtQzTewGvLUU7PhC7fIUTuGC3qQURhGaiCAHhffva

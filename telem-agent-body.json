@@ -1,0 +1,64 @@
+{
+    "storage": {
+        "aliases": {
+            "protocol": {
+                "choices": [
+                    "notls",
+                    "tls"        
+                ],
+                "type": "string"      
+            },
+            "snap": {
+                "type" : "string"
+            }    
+        },    
+        "schema": {
+            "agent": {
+                "keys": "$protocol",
+                "values": {
+                    "schema": {
+                        "address": "string",
+                        "target": "string",
+                        "key" : "string",
+                        "cert" : "string",
+                        "serverca" : "string"
+                    }
+                }     
+            },
+            "allowed": {
+                "keys" : "$snap",
+                "values": {
+                    "schema": {
+                        "sub": {
+                            "type": "array",
+                            "unique": true,
+                            "values": "string"
+                        },
+                        "pub": {
+                            "type": "array",
+                            "unique": true,
+                            "values": "string"
+                        }
+                    }
+                }
+            },
+            "denied": {
+                "keys" : "$snap",
+                "values": {
+                    "schema": {
+                        "sub": {
+                            "type": "array",
+                            "unique": true,
+                            "values": "string"
+                        },
+                        "pub": {
+                            "type": "array",
+                            "unique": true,
+                            "values": "string"
+                        }
+                    }
+                }
+            }      
+        } 
+    }
+}

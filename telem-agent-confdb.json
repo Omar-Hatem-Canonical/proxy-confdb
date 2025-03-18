@@ -1,0 +1,66 @@
+{
+    "type": "confdb",
+    "authority-id": "6mluykWFsbpSV8RGPGjH7KFAkAOvdRyN",
+    "account-id": "6mluykWFsbpSV8RGPGjH7KFAkAOvdRyN",
+    "name": "telem-agent",
+    "revision": "6",
+    "views": {
+        "control-agent": {
+            "rules": [
+                {
+                    "request": "{protocol}",
+                    "storage": "agent.{protocol}",
+                    "content": [
+                        {
+                            "request": "address",
+                            "storage": "address",
+                            "access": "read-write"
+                        },
+                        {
+                            "request": "target",
+                            "storage": "target",
+                            "access": "read-write"
+                        },
+                        {
+                            "request": "key",
+                            "storage": "key",
+                            "access": "read-write"
+                        },
+                        {
+                            "request": "cert",
+                            "storage": "cert",
+                            "access": "read-write"
+                        },
+                        {
+                            "request": "serverca",
+                            "storage": "serverca",
+                            "access": "read-write"
+                        }
+                    ]
+                }
+            ]
+        },
+        "control-topics": {
+            "rules": [
+                {
+                    "request": "{snap}",
+                    "storage": "allowed.{snap}",
+                    "content": [
+                        {
+                            "request": "sub",
+                            "storage": "sub",
+                            "access": "read-write"
+                        },
+                        {
+                            "request": "pub",
+                            "storage": "pub",
+                            "access": "read-write"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "body": "{\n  \"storage\": {\n    \"aliases\": {\n      \"protocol\": {\n        \"choices\": [\n          \"notls\",\n          \"tls\"\n        ],\n        \"type\": \"string\"\n      },\n      \"snap\": {\n        \"type\": \"string\"\n      }\n    },\n    \"schema\": {\n      \"agent\": {\n        \"keys\": \"$protocol\",\n        \"values\": {\n          \"schema\": {\n            \"address\": \"string\",\n            \"cert\": \"string\",\n            \"key\": \"string\",\n            \"serverca\": \"string\",\n            \"target\": \"string\"\n          }\n        }\n      },\n      \"allowed\": {\n        \"keys\": \"$snap\",\n        \"values\": {\n          \"schema\": {\n            \"pub\": {\n              \"type\": \"array\",\n              \"unique\": true,\n              \"values\": \"string\"\n            },\n            \"sub\": {\n              \"type\": \"array\",\n              \"unique\": true,\n              \"values\": \"string\"\n            }\n          }\n        }\n      },\n      \"denied\": {\n        \"keys\": \"$snap\",\n        \"values\": {\n          \"schema\": {\n            \"pub\": {\n              \"type\": \"array\",\n              \"unique\": true,\n              \"values\": \"string\"\n            },\n            \"sub\": {\n              \"type\": \"array\",\n              \"unique\": true,\n              \"values\": \"string\"\n            }\n          }\n        }\n      }\n    }\n  }\n}",
+    "timestamp": "2025-01-23T00:00:00+00:00"
+}

@@ -10,7 +10,7 @@ confinement: strict
 plugs:
   proxy-control:
     interface: confdb
-    account: f22PSauKuNkwQTM9Wz67ZCjNACuSjjhN
+    account: 6mluykWFsbpSV8RGPGjH7KFAkAOvdRyN
     view: network/control-proxy
     role: custodian
 
